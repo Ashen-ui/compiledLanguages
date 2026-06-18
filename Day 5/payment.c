@@ -49,6 +49,17 @@ int addToList(paymentList *list, paymentInfo info) {
     return 1;
 }
 
+int removeFromList(paymentList *list, size_t index) {
+    if (index >= list->counter) {
+        return 0;
+    }
+    for (size_t i = index; i+1 < list->counter; i++) {
+        list->Objects[i] = list->Objects[i+1];
+    }
+    list->counter = list->counter - 1;
+    return 1;
+}
+
 double listTotal(const paymentList *list) {
     double total = 0.0;
     for (size_t i = 0; i < list->counter; i++) {

@@ -26,6 +26,7 @@ void freeList(paymentList *list);
 void displayPayments(const paymentList *list);
 
 int addToList(paymentList *list, paymentInfo info);
+int removeFromList(paymentList *list, size_t index);
 double listTotal(const paymentList *list);
 
 #endif 

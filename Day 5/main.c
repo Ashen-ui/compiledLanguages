@@ -60,6 +60,20 @@ int main(void) {
                 addPayment(&list);
                 break;
             case 3:
+                if (list.counter == 0) {
+                    printf("Nothing to remove\n");
+                    break;
+                }
+                displayPayments(&list);
+                int num = 0;
+                printf("Number to remove : ");
+                scanf("%d", &num);
+                if (removeFromList(&list, (size_t)(num - 1))) {
+                    printf("Payment removed\n");
+                } else {
+                    printf("Invalid number\n");
+                }
+                break;
             case 4:
             case 5:
                 break;
