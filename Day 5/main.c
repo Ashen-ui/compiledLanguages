@@ -1,3 +1,4 @@
+#include "payment.h"
 #include <stdio.h>
 static void menu(void)
 {
@@ -11,8 +12,32 @@ static void menu(void)
     printf("Choose an Option : ");
 }
 
-int main(void)
-{
+static void addPayment(paymentList *list) {
+    paymentInfo info;
+
+    printf("Description : ");
+    scanf(" %[^\n]s", info.description);
+
+    printf("Amount      : ");
+    scanf("%lf", &info.amount);
+
+    printf("Category    : ");
+    scanf("%s", info.category);
+
+    printf("Date (DD/MM/YYYY) : ");
+    scanf("%s", info.date);
+
+    if (addToList(list, info)) {
+        printf("Payment added to list !\n");
+    } else {
+        printf("Error: List full, payment not added");
+    }
+}
+
+int main(void) {
+    paymentList list;
+    initializeList(&list);
+    
     int choice = 0;
     while (choice != 6) {
         menu();
@@ -20,7 +45,11 @@ int main(void)
 
         switch (choice) {
             case 1:
+                displayPayments(&list);
+                break;
             case 2:
+                addPayment(&list);
+                break;
             case 3:
             case 4:
             case 5:
@@ -33,5 +62,6 @@ int main(void)
                 break;
         }
     }
+    freeList(&list);
     return 0;
 }
