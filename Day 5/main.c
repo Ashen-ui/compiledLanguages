@@ -74,8 +74,15 @@ int main(void) {
                     printf("Invalid number\n");
                 }
                 break;
-            case 4:
+            case 4: {
+                char cat[catLength];
+                printf("Which Category to Filter? : ");
+                scanf("%s", cat);
+                filterByCategory(&list, cat);
+                break;
+            }
             case 5:
+                totalByCategory(&list);
                 break;
             case 6:
                 if (savePayments(&list, saveFile) == 1) {

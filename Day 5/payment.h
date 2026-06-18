@@ -24,6 +24,8 @@ typedef struct {
 void initializeList(paymentList *list);
 void freeList(paymentList *list);
 void displayPayments(const paymentList *list);
+void filterByCategory(const paymentList *list, const char *category);
+void totalByCategory(const paymentList *list);
 
 int addToList(paymentList *list, paymentInfo info);
 int removeFromList(paymentList *list, size_t index);
