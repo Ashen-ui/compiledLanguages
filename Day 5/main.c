@@ -1,5 +1,8 @@
 #include "payment.h"
+#include "save.h"
 #include <stdio.h>
+
+static const char *saveFile = "saves/payments.csv";
 static void menu(void)
 {
     printf("\n===== Payment Manager =====\n");
@@ -9,7 +12,7 @@ static void menu(void)
     printf("4. Filter by Category\n");
     printf("5. Total by Category\n");
     printf("6. Exit\n");
-    printf("Choose an Option : ");
+    printf("Choose an Option : \n");
 }
 
 static void addPayment(paymentList *list) {
@@ -37,6 +40,12 @@ static void addPayment(paymentList *list) {
 int main(void) {
     paymentList list;
     initializeList(&list);
+
+    if (loadPayments(&list, saveFile) == 1) {
+        printf("%zu payments loaded from file\n", list.counter);
+    } else {
+        printf("Couldn't find a save file\n");
+    }
     
     int choice = 0;
     while (choice != 6) {
@@ -55,7 +64,11 @@ int main(void) {
             case 5:
                 break;
             case 6:
-                printf("Goodbye !\n");
+                if (savePayments(&list, saveFile) == 1) {
+                    printf("Saved to %s. Exiting\n", saveFile);
+                } else {
+                    printf("Couldn't save file\n");
+                }
                 break;
             default:
                 printf("Invalid Choice\n");

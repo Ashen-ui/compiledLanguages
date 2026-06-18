@@ -1,6 +1,6 @@
 compiler = gcc
 params = -Wall -Wextra
-input = main.c payment.c
+input = main.c payment.c save.c
 output = $(input:.c=.o)
 prjName = PM
 
