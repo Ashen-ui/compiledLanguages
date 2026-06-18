@@ -4,6 +4,7 @@ A currently working textual application to write and save all your payments
 ## Features
 - Add a payment (description, Amount, Category and date)
 - Remove a payment
+- Show all of your payments in an ASCII table
 - Filter by categories (case insensitive)
 - Calculate totals by categories
 - Saved in a CSV file inside saves folder

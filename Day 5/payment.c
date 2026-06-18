@@ -73,9 +73,14 @@ void displayPayments(const paymentList *list) {
         printf("No payments yet\n");
         return;
     }
-
+    
+    printf("+-----+----------------------+----------+----------------+------------+\n");
+    printf("| %-3s | %-20s | %8s | %-14s | %-10s |\n",
+           "#", "Description", "Amount", "Category", "Date");
+    printf("+-----+----------------------+----------+----------------+------------+\n");
     for (size_t i = 0; i < list->counter; i++) {
-        printf("%zu. %s | %.2f | %s | %s\n",
+        printf("+-----+----------------------+----------+----------------+------------+\n");
+        printf("|  %-2zu | %-20.20s | %8.2f | %-14.14s | %-11s|\n",
                 i+1,
                 list->Objects[i].description,
                 list->Objects[i].amount,
@@ -83,6 +88,7 @@ void displayPayments(const paymentList *list) {
                 list->Objects[i].date);
     }
 
+    printf("+-----+----------------------+----------+----------------+------------+\n");
     double finalAmount = listTotal(list);
     printf("Total : %.2f\n", finalAmount);
 }
